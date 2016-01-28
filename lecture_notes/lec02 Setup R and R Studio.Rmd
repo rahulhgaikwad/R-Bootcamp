@@ -2,7 +2,7 @@
 title: "Setting up R and R Studio"
 author: "Robin Donatello"
 date: "Math 199 - Spring 2016"
-output: html_document
+output: pdf_document
 ---
 
 ##  Goals of this lesson

@@ -2,7 +2,7 @@
 title: "A Bootcamp for Reproducible Data Analysis using R"
 author: "Robin Donatello"
 date: "Math 199 Fall 2016"
-output: html_document
+output: pdf_document
 ---
 
 
