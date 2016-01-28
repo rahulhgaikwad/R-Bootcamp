@@ -1,0 +1,28 @@
+---
+output: html_document
+---
+
+# Schedule
+### Last Updated: `r format(Sys.Date(), format="%B %d %Y")`
+
+Don't forget to frequently check the [course discussion forum](https://groups.google.com/forum/#!forum/csuc_stat) for additional information and help outside of class time!
+
+| Week | Dates | Materials | Description |
+|:----:|:-----:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | 1/28/16 | [Intro to Class](lecture_notes/lec01_Intro_to_the_class.html), [Installing R & R Studio](lecture_notes/lec02_Setup_R_and_R_Studio.html), [Swirl lessons](swirl_lessons.zip) | Introduction to the class, getting software installed. Using Swirl in R.|
+|  |   | [Lab 1](labs/Lab1_-_Getting_Started_in_R.pdf) | Getting Started with R. Basic arithmetic, evaluating equations, creating vectors and sequences of numbers, logical operators and expressions, missing values. |
+| 2 | 2/2/16 | [Lab 2](labs/Lab2_-_Subsetting_Vectors.pdf) | Extracting subsets of data from vectors. |
+|   |  | [Lab 3](labs/Lab3_-_Generating_Data.pdf), [email50](https://rawgit.com/norcalbiostat/R-Bootcamp/gh-pages/data/email50.txt), [NCbirths](https://rawgit.com/norcalbiostat/R-Bootcamp/gh-pages/data/NCbirths.csv), [OSCounty](https://rawgit.com/norcalbiostat/R-Bootcamp/gh-pages/data/OSCounty.xlsx)| Matricies and data frames. Looking at data. Importing Data into R. |
+|   |  | [Lab 4](labs/Lab4_-_Factors_Lists_and_Functions.pdf) | Factors and Lists, Functions and their arguments.|
+| 3 | 2/8/16 | Quiz 1 | Blackboard learn quiz on Labs 1-4 |
+|   |  | [Lab 5](labs/Lab5_-_Intro_to_RR_and_Markdown.pdf), [Lab5a.Rmd](labs/Lab5a.Rmd), [Lab5a helper](labs/Lab5a_Helper.html)| Reproducible research using R and Markdown |
+|   |  | <span style="color:red">`*`</span> [Lab 6.Rmd](labs/Lab6-DataViz.Rmd), [Data viz tutorial](labs/Data_Visualization_Tutorial.html)|  Data Visualizing using base and `ggplot2` graphics |
+|   |   | <span style="color:red">`*`</span> [Lab 7.html](labs/Lab7-DataCleaning.html), [Lab 7.pdf](labs/Lab7-DataCleaning.pdf), [Lab 7 practice.Rmd](labs/Lab7-Practice.Rmd) | Data cleaning and aggregation with `dplyr()`. Lab available as pdf or html. Practice problems pre-loaded in the .Rmd file.  |
+| 4 | 2/15/16 | Quiz 2 | Blackboard learn quiz on Labs 5-7 |
+|   | 2/16/16 | [Data Analysis Project](http://htmlpreview.github.io/?https://github.com/norcalbiostat/R-Bootcamp/blob/gh-pages/EDA_project.html) | Time to put all you learned into action! Examine the relationship of weight gain during pregnancy and smoking habits.|
+|   | 2/18/16 | Data Analysis Due | Data Analysis project to be submitted via BBLearn |
+|   | 2/19/16 | Course Evaluation | Provide anonomyous feedback about this course so I can improve. (To be posted in BBLearn)|
+
+<span style="color:red">`*`</span> This is a long lab!
+
+

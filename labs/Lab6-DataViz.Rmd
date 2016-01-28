@@ -1,0 +1,61 @@
+---
+title: "Lab6 - Plotting Data"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: cerulean
+---
+
+# Introduction
+A semi-comprehensive tutorial on creating a variety of plots is available on the class website [here](link). 
+
+
+Follow along through this tutorial at each step try to reproduce the plot. At the end of each section come back to this document for practice. You will use the `survey` data set that is built into `R`, create the following plots. You can use any plotting method you choose. 
+
+
+## One categorical variable
+
+1.  A barchart of how often the student exercises. 
+
+## Two categorical variables. 
+
+1.  A grouped barchart of exercise frequency vs smoking status. 
+2.  One would expect that smokers exercise less than non smokers. Using a mosiaicplot does there seem to be a relationship between smoking and exercise? 
+
+## One numeric variable. 
+
+1. A histogram of age
+    a.  With an overlaid density plot in a different color.
+2. A boxplot of pulse rate.
+3. Determine if height is normally distributed. 
+
+
+## Two numeric variables. 
+
+1. A scatterplot of the span of the writing hand against span of non-writing hand. 
+    a. Add a best fit line in purple.
+    b. Add a lowess or smoother line in brown. 
+    
+    
+## Two numerical and one categorical
+
+1. A scatterplot of height against age
+    a. grouped by gender (you can choose grouping by shape or color)
+    b. With a lowess line per gender
+2. A scatterplot of height against age
+    a. paneled (faceted) by exercise regimine
+
+
+## One numeric and one categorical
+
+1. Grouped boxplots of pulse by smoking status. 
+2. Overlaid density plots of height by gender. 
+3. Histogram of writing hand span paneled by gender
+     a. where the panels are horizontal (1 row 2 columns)
+     b. where the panels are vertical (2 rows 1 column)
+     
+     
+     
+

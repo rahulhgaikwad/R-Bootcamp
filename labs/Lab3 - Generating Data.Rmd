@@ -1,0 +1,112 @@
+---
+title: 'Lab 3: Importing and working with Data'
+output:
+  pdf_document: 
+    highlight: zenburn
+    number_sections: yes
+  html_document:
+    highlight: pygments
+    theme: cerulean
+---
+
+# Introduction 
+The goal of this lab is to introduce you to how R deals with the most common way data is stored for analysis, a rectangular format like an Excel spreadsheet. Ideally each row represents data on a single observation and each column contains data on a single variable, or characteristic, of the observation. This is called `tidy data`. We will start to learn some tools to look at the data, and for getting data from an external file into R for analysis. 
+
+
+## Matrices and Data Frames
+
+Complete the **Matrices and Data Frames** Swirl lesson. 
+
+
+### More on Data Frames
+R comes pre-loaded with some training data sets you can practice with. One of them is the full `iris` data by Edgar Anderson. You can read more about this data set by typing `?iris`.
+
+Similar to vectors and matrices, you select elements from a data frame with the help of square brackets [ ]. By using a comma, you can indicate what to select from the rows and the columns respectively. For example to select rows 1,2,3 and columns 2,3,4 in `iris` you type
+```{r}
+iris[1:3,2:4]
+```
+
+You will often want to select an entire column, namely one specific variable from a data frame. If you want to select all elements of the variable `Sepal.Width`, both `iris[,3]` and `iris$Sepal.Width` do the trick. I call the latter method "dollar sign notation" for obvious reasons. 
+
+Often you don't know what the variable name is or you want to check the spelling. The functions `names()` and `colnames()` is where you'll turn to. For data frames they have the same result, but they do not each work on all types of `R` objects. 
+```{r}
+names(iris)
+colnames(iris)
+```
+
+### Practice
+
+1. View the top 5 entries in the `Species` variable using both bracket and dollar sign notation. 
+2. Observe what the error message is when you have a typo in the variable name. 
+Type `table(iris$species)` in the console to see (note the lower case s in species). 
+
+## Looking at Data
+
+Complete the **Looking at Data** Swirl lesson. 
+
+### Practice
+
+1. Use `summary()` to find out how many different species of flowers were sampled, and how many flowers from each species were sampled.  
+2. Use `table()` on the `Species` variable to confirm your answer. 
+
+## Tidy Data
+
+Review Ramnath Vaidyanathan's [workshop lecture notes](https://ramnathv.github.io/pycon2014-r/explore/tidy.html) on tidy data, and either Hadley Wickham's paper on [Tidy Data](http://www.jstatsoft.org/v59/i10/paper) (at least through section 3) -or-   an informal and code heavy [vignette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) for the tidy data package. 
+
+The following is data collected by the Pew Research Center that examines the relationship between income and religion in the US. In other words, which religions have the wealthiest adherents? 
+```{r, echo=FALSE, warning=FALSE}
+library(readr)
+pew <- read_csv("tidy/pew.csv")
+knitr::kable(pew[-5,1:8])
+```
+
+1. What characteristics are being measured here? Hint: There are 3. 
+2. Is this tidy data? 
+3. What would a tidy version of this data set look like? 
+
+
+## Importing Data
+
+In this bootcamp we are only going to explore reading flat files that exist on your computer into R from three most commonly used data sources: A text file, A CSV file and an Excel file. 
+
+Go to the [Course schedule](http://norcalbiostat.github.io/R-Bootcamp/Schedule.html) and download the files for this lab. Be sure to put into your RBootcamp folder. You have to \textcolor{red}{right click} and select \textcolor{red}{save as} to correctly save the Email file}. Otherwise it will open in a browser window and you _cannot_ save it from there correctly. Once they are in your RBootcamp folder, go ahead and open them just to see what they look like. 
+
+#### Text and CSV files
+Text files are very simple files that have a `.txt` file extension. Columns are separated by a `delimiter`. Common delimiters include a space, a comma (,) or a tab. Uncommon delimiters could include a % or even a semi-colon. Follow along with these examples and make sure you can read in the data correctly and that it matches what is shown below. 
+
+We will use the `read.table()` function that is in base R to read in any type of delimited file. Don't forget that you need to update the path shown (currently displaying `../data/`) to **YOUR** path on **YOUR** machine that points to your RBootcamp folder. Review the lecture notes on how to find your path if you are still struggling with this. 
+
+A tab-delimited text file can be read in using `"\t"` as the deliminator character. In this class you **ALWAYS** want to include `header=TRUE` to signify that the data in the first row contains our column names. 
+```{r}
+email50 <- read.table("../data/email50.txt", header=TRUE, sep="\t")
+dim(email50)
+class(email50)
+email50[1:6,1:6]
+```
+
+CSV is a fancy way of saying a text file with comma-separated values (i.e. CSV). We could use `read.table()` but `read.csv()` is optimized to read in CSV files. 
+
+```{r}
+NCbirths <- read.csv("../data/NCbirths.csv", header=TRUE)
+dim(NCbirths)
+class(NCbirths)
+head(NCbirths)
+str(NCbirths)
+```
+
+
+#### CSV and Excel files
+The best method I have found so far to read in Excel files is from the `readxl` package by Hadley Wickham. This package need to be installed first, and then can be simply loaded each time you start an `R` session where you will be reading in this type of data. Go ahead and install it now.  
+
+The `read_excel()` function is what we are going to use. Note the use of the underscore `_` instead of a period `.` between read and the file type.  
+
+```{r, eval=-6}
+library(readxl)
+OSCounty <- read_excel("../data/OSCounty.xlsx", sheet=1, col_names=TRUE)
+dim(OSCounty)
+class(OSCounty)
+OSCounty[1:6,1:6]
+str(OSCounty) #Not run due to the length of output. 
+```
+
+Notice that `OSCounty` isn't just a data frame, but also of class `tbl_df`. It's just another format of data storage. You are welcome to look up the differences and any advantages of using `tbl_df` over `data.frame` on your own time, we will not cover those differences in this class. 

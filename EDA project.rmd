@@ -1,0 +1,84 @@
+---
+title: "Data Analysis Project"
+output: html_document
+---
+
+# Exploratory Data Analysis of Births in North Carolina
+Time to put everything you learned in the past three weeks into action. In an exploratory data analysis (EDA) you are just looking at (exploring) the data and learning about the data and possible relationships between variables. This is not a formal statistical analysis, you cannot make any claims about groups being statistically different. This is just descriptive. You are allowed and encouraged to hypothesize why you observe certain relationships or data characteristics, just be sure not to draw any conclusions from the data. 
+ 
+Using the `ncbirths` data set, describe the relationship between the mothers smoking `habit` and the weight `gained` by the mother during pregnancy. Use the grading rubric for guidance as to what you should present, in what order, and level of detail you need to present.
+
+# Submission
+You will upload the knitted html file using BBLearn. This will have to be done three separate times (DA1, DA2, DA3) so that it can have three separate peer reviews. To allow for adequate time for peer grading the submission deadline is a strict cutoff. No late assignments will be accepted. 
+
+### Guidelines
+
+* Knit early and often. As often as every time you include a new R code chunk. 
+* Spell check your report prior to submission using RStudio. 
+* Re-read your report and edit for clarification and removing duplicated information. 
+
+
+# Anonymous Peer grading - Do not include your name on this assignment
+
+After the submission deadline, your analysis projects will be randomly assigned to three of your classmates for peer grading. This means you will grade and provide feedback on 3 of your classmates reports. Failure to grade your classmates projects will result in a 33% reduction in your project grade per missing review. In other words, your final project grade will be calculated as
+
+$$ mean(review1-review3) * \frac{\# reviews}{3}$$
+
+You can request an instructor review of any peer reviews that you felt were incorrect. 
+
+Each grading criteria will have a section for feedback/justification. Keep your responses concise and polite. 
+
+# Grading Rubric
+The criteria below is what you will be graded on. Below each criteria is an example of the points awarded for the level of competency. 
+
+1. Reproducibility: Was the report created in R, using Markdown, in a reproducible manner? **DO NOT TRY TO REPRODUCE THE ANALYSIS ON YOUR MACHINE**
+  - 0: The report appears to have been written in another program and R output and/or figures look to have been copied/pasted into the document. 
+  - 2: The analysis report was written in RMarkdown, but vital pieces of information such as the code to create the plots or to read in the data are missing. 
+  - 4: This analysis is fully reproducible. It is clear where the data came from, and how it is used at each step. This code could be downloaded and run on another machine with only a change to the data location. 
+
+
+2. Data Description: Provide a description of the data set and the variables of interest. 
+- 0. There is no description or the description is a copy of the help file.
+- 1. There is a minor description of the data but not enough to understand what is being measured or compared. 
+- 2. The data description is clear and concise, it is clear to me what data is being analyzed and where it was obtained. 
+
+3. Describe Outcome: Fully describe the distribution of `gained`. 
+- 0. There are no numerical or graphical summaries provided. 
+- 1. Only numeric or only graphical summaries were created, but no textual description. 
+- 2. The variable was fully described using both numeric and graphical summary methods. This information was summarized below the output in a paragraph form. 
+
+
+4. Describe Predictor: Fully describe the distribution of `habit`.
+- 0. There are no numerical or graphical summaries provided. 
+- 1. Only numeric or only graphical summaries were created, but no textual description. 
+- 2. The variable was fully described using both numeric and graphical summary methods. This information was summarized below the output in a paragraph form. 
+
+
+5. Relationship: Compare the distribution of `gained` across levels of `habit`. 
+- 0. No comparison was made, or the variables were compared, but inappropriate graphics or summary statistics were created. 
+- 1. The variables were compared using appropriate graphical methods and grouped summary statistics were created, but nothing was discussed. 
+- 2. The variables were compared using appropriate graphical methods and a paragraph textual explanation of what the summaries showed. 
+
+<!---
+6. Hypothesize justifications for the relationships (or lack thereof) observed between your two chosen variables. 
+- 0. No possible justification was discussed. 
+- 1. A possible justification for the observed relationship between the chosen two variables was provided. 
+- 2. A possible justification was discussed and is sensible, reasonable, and aligned with the reported findings. 
+
+7. How could an agency (such as government or non-profit), researchers or the public use these findings. What could they do with this information? 
+- 0. This was not discussed. 
+- 1. Reasonable public uses of the findings were identified. 
+
+8. Propose further work. What are the next questions that you would like to ask of the data? 
+- 0. No further work was proposed. 
+- 1. Futher work was proposed but it is not relevant or not answerable given the data available. 
+- 2. The proposed further work is an interesting concept to explore. 
+--->
+
+## Other ratings and feedback
+You will also be graded on overall organization and grammer. For each graded criteria there will be an opportunity for the reviewer to provide constructive, polite comments and suggestions for improvement. 
+
+
+
+
+

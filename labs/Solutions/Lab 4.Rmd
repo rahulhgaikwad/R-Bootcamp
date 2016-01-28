@@ -1,0 +1,105 @@
+---
+title: "Lab 4"
+output: html_document
+---
+
+1.1 Factors
+
+```{r}
+table(iris$Species)
+class(iris$Species)
+a <- as.character(iris$Species)
+class(a)
+```
+
+
+1.2 Lists
+
+```{r}
+my_vec <- sample(1:10, 5)
+my_mat <- matrix(rnorm(1:10), nrow = 5)
+my_df <- iris[1:5, ]
+
+my_list <- list(vec = my_vec, mat = my_mat, df = my_df)
+my_list
+
+str(my_list)
+```
+
+
+1.3 Functions and their arguments
+
+?mean
+
+1.3.1 Argument Ordering
+
+```{r}
+y <- sample(1:100, 20)
+y[sample(1:length(y), 5)] <- NA
+y
+
+mean(y)
+mean(y, na.rm = TRUE)
+
+mean(y, TRUE)
+
+mean(na.rm = TRUE, x = y, trim = .1)
+```
+
+2. Practice
+
+Use the NCbirths data set for the following questions.
+
+```{r import}
+NCbirths <- read.csv("NCbirths.csv", header = TRUE)
+```
+
+1. Calculate the mean age of the mothers (mage) in the sample.
+  
+```{r mage_mean}
+mean(NCbirths$mage)
+```
+
+2. Calculate the trimmed mean mother's age after eliminating the outer 10% of ages.
+
+This can be intrepretted two ways one is 10% is 5% from each side or 10% is 10% from each side.
+
+```{r trimmed_mage_mean}
+mean(NCbirths$mage, trim = 0.05)
+
+mean(NCbirths$mage, trim = 0.1)
+```
+
+3. Calculate the mean father's age (fage).
+
+```{r fage_mean}
+mean(NCbirths$fage, na.rm = TRUE)
+```
+
+4. Do mothers who smoke give birth to smaller babies?  (Hint: Use subset to create subsets of the data set by smoking habit status then find the mean weight for each subset.)
+
+```{r small_babies}
+nonsmoke <- subset(NCbirths, habit == "nonsmoker")
+smoke <- subset(NCbirths, habit == "smoker")
+mean(nonsmoke$weight)
+mean(smoke$weight)
+```
+
+In this data set on average the mothers who smoke give birth to smaller babies.
+
+5. Do more non white mothers smoke?  Use table() to find this answer and don't forget to check for missing values.
+
+```{r mother_smoke}
+no_NA_NCbirths <- subset(NCbirths, !is.na(whitemom) & !is.na(habit))
+save_table <- table(no_NA_NCbirths$habit, no_NA_NCbirths$whitemom)
+save_table
+prop_save_table <- prop.table(save_table, margin = 2)
+prop_save_table
+```
+
+I don't think we have introduced the `prop.table` function by this lesson, but it shows that when looked at as proportions there is a higher propensity for white mothers in this data set to smoke than non white mothers.
+
+
+
+
+

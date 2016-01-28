@@ -1,0 +1,66 @@
+---
+title: "Lab 2"
+output: html_document
+---
+
+1.1 Subsetting vectors using positional indicators and the bracket [] notation.
+
+```{r, eval = FALSE}
+library(swirl)
+swirl()
+```
+
+1.1.1 Practice
+
+1. Create a vector of 100 random normal values by typing rnorm(100) and assigning it to a vector.
+
+```{r}
+rand_hundred <- rnorm(100)
+```
+
+2. Print out the top 10 values.
+
+```{r}
+sorted <- sort(rand_hundred, decreasing = TRUE)
+sorted[1:10]
+```
+
+3. Print out the values that are greater than 3.  Assign this to new vector object named y.
+
+```{r}
+y <- rand_hundred[rand_hundred > 3]
+y
+```
+
+
+1.2 Subsetting Vectors Using Subset()
+
+1. Read the help file for subset by typing ?subset.  Don't worry if it seems cryptic.
+
+?subset
+
+
+1.2.1 Practice
+
+1. Repeat number 3 from the prior practice but use the subset() function. Assign this to a new vector object named z.
+
+```{r}
+z <- subset(rand_hundred, rand_hundred > 3)
+```
+
+2. Prove that these two methods produce the exact same subset by typing identical (y,z).
+
+```{r}
+identical (y,z)
+```
+
+
+1.3 Using Script Files
+
+```{r}
+add_for_me <- function(a,b){
+  a + b
+}
+
+add_for_me(5,6)
+```

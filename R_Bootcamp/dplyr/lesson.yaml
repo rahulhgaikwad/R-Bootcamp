@@ -1,0 +1,160 @@
+- Class: meta
+  Course: R Bootcamp
+  Lesson: dplyr
+  Author: Robin Donatello
+  Type: Standard
+  Organization: California State University Chico
+  Version: 2.2.21
+
+  
+- Class: text
+  Output: The goal of this lesson is to introduce you to the basic tools that dplyr provides, 
+    and show how you to apply them to data frames.
+
+- Class: cmd_question
+  Output: Load the 'dplyr' library. 
+  CorrectAnswer: library(dplyr)
+  AnswerTests: omnitest(correctExpr='library(dplyr)')
+  Hint: Type library(dplyr) and press Enter.
+    
+- Class: text
+  Output: To explore the basic data manipulation verbs of dplyr, we'll start with the built in 
+    nycflights13 data frame. This dataset contains all 336776 flights that departed from 
+    New York City in 2013. The data comes from the US Bureau of Transportation Statistics, 
+    and is documented in ?nycflights13.
+    
+- Class: cmd_question
+  Output: Load the 'nycflights13' library. 
+  CorrectAnswer: library(nycflights13)
+  AnswerTests: omnitest(correctExpr='library(nycflights13)')
+  Hint: Type library(nycflights13) and press Enter.
+    
+- Class: cmd_question
+  Output: How large is the 'flights' data set? In other words, what's its dimension?
+  CorrectAnswer: dim(flights)
+  AnswerTests: omnitest(correctExpr='dim(flights)')
+  Hint: The dim() function gives you the dimension. 
+    
+- Class: cmd_question
+  Output: Use the head() function to take a look at the top few records of this data to get a feel for it. 
+  CorrectAnswer: head(flights)
+  AnswerTests: omnitest(correctExpr='head(flights)')
+  Hint: Type head(flights) and press Enter. 
+  
+- Class: text
+  Output: dplyr can work with data frames as is, but if you're dealing with large data, it's 
+    worthwhile to convert them to a tbl_df - this is a wrapper around a data frame that won't 
+    accidentally print a lot of data to the screen.
+ 
+- Class: text
+  Output: There are 5 primary verbs we will be using. Filter, select, arrange, mutate and summarize.
+    Let's work through each one at a time. 
+
+- Class: text
+  Output: filter() allows you to select a subset of the rows of a data frame. 
+    The first argument is the name of the data frame, and the second and subsequent are filtering 
+    expressions evaluated in the context of that data frame
+
+- Class: cmd_question
+  Output: For example, we can select all flights on January 1st with filter(flights, month == 1, day == 1). Try that now. 
+  CorrectAnswer: filter(flights, month == 1, day == 1)
+  AnswerTests: omnitest(correctExpr='filter(flights, month == 1, day == 1)')
+  Hint: Type filter(flights, month == 1, day == 1) and press Enter. 
+  
+
+- Class: cmd_question
+  Output: filter() works similarly to subset() except that you can give it any number of filtering 
+    conditions which are joined together with &. You can use other boolean operators explicitly. Filter
+    the flights data set to only select flights in January or Febuary.
+  CorrectAnswer: filter(flights, month == 1| month == 2)
+  AnswerTests: any_of_exprs('filter(flights, month == 1| month == 2)', 'filter(flights, month %in% c(1,2))')
+  Hint: Filter the flights data where month == 1 | month == 2. 
+  
+- Class: cmd_question
+  Output: To select rows by position, use slice(). Slice off the top 1:10 rows. Don't forget the first argument is the data frame. 
+  CorrectAnswer: slice(flights, 1:10)
+  AnswerTests: omnitest(correctExpr='slice(flights, 1:10)')
+  Hint: Type slice(flights, 1:10) and press Enter. 
+  
+- Class: text
+  Output: arrange() works similarly to filter() except that instead of filtering or selecting rows, 
+    it reorders them. It takes a data frame, and a set of column names (or more complicated expressions) to 
+    order by. If you provide more than one column name, each additional column will be used to break ties in 
+    the values of preceding columns
+    
+- Class: cmd_question
+  Output: Arrange the flights data in chronological order by typing arrange(flights, year, month, day).
+  CorrectAnswer: arrange(flights, year, month, day)
+  AnswerTests: omnitest(correctExpr='arrange(flights, year, month, day)')
+  Hint: Type arrange(flights, year, month, day) and press Enter.    
+
+- Class: cmd_question
+  Output: Use desc() on the ordering variable to sort it in descending order (largest to smallest). 
+    Type arrange(flights, desc(arr_delay)) to sort flights by descending arrival delay. 
+  CorrectAnswer: arrange(flights, desc(arr_delay))
+  AnswerTests: omnitest(correctExpr='arrange(flights, desc(arr_delay))')
+  Hint: Type arrange(flights, desc(arr_delay)) and press Enter.   
+
+- Class: text
+  Output: Often you work with large datasets with many columns where only a few are actually of interest to you. 
+    select() allows you to rapidly zoom in on a useful subset using operations that usually only work on numeric 
+    variable positions
+  
+- Class: cmd_question
+  Output: Type select(flights, year, month, day) to select columns by name. 
+  CorrectAnswer: select(flights, year, month, day)
+  AnswerTests: omnitest(correctExpr='select(flights, year, month, day)')
+  Hint: Type select(flights, year, month, day) and press Enter.  
+  
+- Class: cmd_question
+  Output: Type select(flights, year:day) to select all columns physically located between year and day. 
+  CorrectAnswer: select(flights, year:day)
+  AnswerTests: omnitest(correctExpr='select(flights, year:day)')
+  Hint: Type select(flights, year:day) and press Enter.  
+  
+- Class: cmd_question
+  Output: Type select(flights, -(year:day)) to select all columns EXCEPT the ones between year and day. 
+  CorrectAnswer: select(flights, -(year:day))
+  AnswerTests: omnitest(correctExpr='select(flights, -(year:day))')
+  Hint: Type select(flights, -(year:day)) and press Enter.  
+
+- Class: text
+  Output: As well as selecting from the set of existing columns, it's often useful to add new columns 
+    that are functions of existing columns. This is the job of mutate()!
+    
+- Class: cmd_question
+  Output: Type mutate(flights, gain = arr_delay - dep_delay, speed = distance / air_time * 60) to create the variables gain and speed. 
+  CorrectAnswer: mutate(flights, gain = arr_delay - dep_delay, speed = distance / air_time * 60)
+  AnswerTests: omnitest(correctExpr='mutate(flights, gain = arr_delay - dep_delay, speed = distance / air_time * 60)')
+  Hint: Type mutate(flights, gain = arr_delay - dep_delay, speed = distance / air_time * 60) and press Enter.  
+
+- Class: cmd_question
+  Output: One key advantage of mutate is that you can refer to the columns you just created. Mutate flights to create two 
+    variables, gain = arr_delay - dep_delay and gain_per_hour = gain / (air_time / 60). 
+  CorrectAnswer: mutate(flights, gain = arr_delay - dep_delay, gain_per_hour = gain / (air_time / 60))
+  AnswerTests: omnitest(correctExpr='mutate(flights, gain = arr_delay - dep_delay, gain_per_hour = gain / (air_time / 60))')
+  Hint: Type mutate(flights, gain = arr_delay - dep_delay, gain_per_hour = gain / (air_time / 60)) and press Enter.  
+
+
+- Class: cmd_question
+  Output: The last verb is summarise(), which collapses a data frame to a single row. It's not very useful yet. Type 
+    summarise(flights, delay = mean(dep_delay, na.rm = TRUE)) to create a new variable called delay that is the average
+    departure delay on the entire flights data set. 
+  CorrectAnswer: summarise(flights, delay = mean(dep_delay, na.rm = TRUE))
+  AnswerTests: omnitest(correctExpr='summarise(flights, delay = mean(dep_delay, na.rm = TRUE))')
+  Hint: Type summarise(flights, delay = mean(dep_delay, na.rm = TRUE)) and press Enter.  
+  
+
+- Class: text
+  Output: You're doing great! That's all we're going to cover in dplyr for now. The next lesson you'll harness the true
+    power of dplyr when using these verbs in grouped operations, and chaining multiple verbs together. 
+
+- Class: mult_question
+  Output: Would you like to inform someone about your successful completion of this lesson?
+  CorrectAnswer: NULL
+  AnswerChoices: Yes; No
+  AnswerTests: notify()
+  Hint: NULL
+
+
+  

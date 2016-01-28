@@ -1,0 +1,110 @@
+---
+title: "Lab 1 Answers"
+output: html_document
+---
+
+1.1 Basic Building Blocks
+```{r, eval = FALSE}
+library(swirl)
+swirl()
+```
+
+1.1.1 Practice
+
+1. Use sample(0:100, size=5) to create a vector of 5 random numbers between 0 and 100, inclusive.  Store this result as a variable x.
+
+```{r}
+x <- sample(0:100, size = 5)
+```
+
+2. Calculate the following (x-5)^2 / sqrt(50-1)
+
+```{r}
+(x-5)^2 / sqrt(50-1)
+```
+
+
+1.2 Sequences of Numbers
+
+```{r, eval = FALSE}
+swirl()
+```
+
+1.2.1 Practice
+
+1. List the even numbers from 1 to 12.
+
+```{r}
+seq(2, 12, by = 2)
+```
+
+2. List the numbers 10 to 1 in descending order.
+
+```{r}
+10:1
+seq(10,1)
+```
+
+3. Create this sequence using R: ("A", "B", "C", "A", "B", "C")
+
+```{r}
+rep(c("A", "B", "C"), 2)
+```
+
+4. Create this sequence using R: ("A", "A", "B", "B", "C", "C")
+
+```{r}
+rep(c("A", "B", "C"), each = 2)
+```
+
+
+1.3 Logic
+
+```{r}
+swirl()
+```
+
+1.3.1 Practice
+
+1. Evaluate ((111>=111) | TRUE) & ((4 + 1) != 5)
+
+```{r}
+((111>=111) | TRUE) & ((4 + 1) != 5)
+```
+
+2. Evaluate !(3 + 5).  What does the ! operator do?  How is it different than !=?
+
+```{r}
+!(3 + 5)
+```
+
+Hint: ?`!`
+
+The way in which ! is different than != is that != is strictly testing whether something is logically not equal to something else, while ! changes what logical statement something previously had.  In other words != is a way to examine existing logical conditions, while ! is a way to assign a different logical conditions by assigning previously true statements FALSE and previously false statements TRUE.
+
+
+1.4 Missing Data
+
+```{r, eval = FALSE}
+swirl()
+```
+
+1.4.1 Practice
+
+1. When you loaded the missing data swirl lesson, a vector called Nile should have been created in your environment.  How many missing values does this vector have?
+
+```{r}
+na_nile <- is.na(Nile)
+sum(na_nile)
+```
+
+The Nile vector has zero missing values.
+
+2. Wrap the sum() function around the is.na() function to find the answer to the above question in one step.  Hint: functions can be nested: f(g(x)).
+
+```{r}
+sum(is.na(Nile))
+```
+
+The Nile vector has zero missing values.
+

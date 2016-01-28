@@ -1,0 +1,68 @@
+---
+title: 'Lab 1: Getting Started with R'
+output:
+  pdf_document:
+    highlight: zenburn
+    number_sections: yes
+  html_document:
+    highlight: pygments
+    theme: cerulean
+---
+
+# Introduction 
+The goal of this lab is to introduce you to the fundamental building blocks of the programming language R. You will start by going through some Swirl tutorials/lessons. Each lesson will take anywhere from 5-15 minutes and you can stop and restart them at any time. You can type `bye()` to exit and save your progress, just be sure to use the same name each time. At the end of the lesson you will have the option to send me an email letting me know you have completed the lesson. **Do this so I can give you credit!**
+
+
+## Basic Building Blocks
+
+Each time you start a new session you will need to load the swirl package by typing `library(swirl)` in the console. Then type `swirl()` to start the tutorial. Follow the instruction prompts and enter your name, then choose the **Basic Building Blocks** lesson. 
+
+### Practice
+
+1. Use `sample(0:100, size=5)` to create a vector of 5 random numbers between 0 and 100, inclusive. Store this result as a variable `x`. 
+2. Calculate the following 
+
+$$
+\frac{(x - 5)^2}{\sqrt(50-1)}
+$$
+
+
+## Sequences of Numbers
+
+Next you're going to learn how to generate sequences of numbers. These objects you'll create are also called `vectors`. Complete the **Sequences of Numbers** swirl lesson. 
+
+### Practice
+
+1. List the even numbers from 1 to 12.
+2. List the numbers from 10 to 1 in descending order. 
+3. Create this sequence using `R`: ("A", "B", "C","A", "B", "C")
+4. Create this sequence using `R`: ("A", "A", "B","B", "C", "C")
+
+
+## Logic
+
+Complete the **Logic** Swirl lesson. 
+
+### Practice
+
+1. Evaluate ``((111 >= 111) | TRUE) & ((4 + 1) != 5)``
+2. Evaluate `8 !=(3+5)`. What does the `!` operator do? How is it different from `!=`? 
+
+
+## Missing Data
+
+Complete the **Missing Values** swirl lesson. 
+
+### Practice
+
+1. When you loaded the missing data swirl lesson, a vector called `Nile` should have been created in your environment. How many missing values does this vector have?
+2. Wrap the `sum()` function around the `is.na()` function to find the answer to the above question in one step. Hint: functions can be nested: `f(g(x))`.
+
+
+
+<!-- Assessment questions -->
+
+## Additional Resources
+* [MartinStatsLectures: R Tutorial 1.1 - Getting started with R ](https://www.youtube.com/watch?v=UYclmg1_KLk)
+
+* [From Revolution Analytics, R: The Most Powerful and Widely Used Statistical Software](https://www.youtube.com/watch?v=TR2bHSJ_eck&feature=youtu.be)

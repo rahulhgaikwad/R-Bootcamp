@@ -1,0 +1,208 @@
+---
+title: "Tutorial Run THrough"
+output: html_document
+---
+
+9:22 start
+10:52 end
+
+TIME CARD
+
+8:25 - 10:55
+
+11:09 - 
+
+The data
+```{r dataset}
+library(ggplot2)
+data("diamonds")
+set.seed(1410) #Make the sample reproducible
+dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
+```
+
+
+One categorical variable
+```{r base_cut}
+dc <- table(dsmall$cut)
+barplot(dc, main = "quick barchart using base graphics")
+```
+
+```{r ggplot_cut}
+qplot(x = cut, data = dsmall, geom="bar", main="quick barchart using qplot")
+
+#ggplot(dsmall, aes(x=cut))
+ggplot(dsmall, aes(x=cut)) +
+  geom_bar() + ggtitle("quick barchart using ggplot")
+
+ggplot(dsmall, aes(x=cut)) + geom_bar() + ggtitle("Frequency of each cut of diamond") + xlab("Quality of the cut") + ylab("Count")
+```
+
+Two Categorical Variables
+
+```{r sidebar_base}
+cc <- table(dsmall$cut, dsmall$color)
+barplot(cc, main="quick side by side barchart using base graphics", beside = TRUE)
+
+barplot(cc, main="quick side by side barchart using base graphics",
+beside = TRUE, col = rainbow(5), legend = rownames(cc))
+```
+
+```{r sidebar_ggplot}
+qplot(x = color, fill = cut, data = dsmall)
+
+qplot(x = color, fill = cut, data = dsmall, position = "dodge")
+qplot(x = cut, fill = color, data = dsmall, position = "dodge")
+```
+
+```{r mosaic_base}
+table(dsmall$cut, dsmall$color)
+mosaicplot(cut~color, data = dsmall)
+
+par(mfrow=c(1,2))
+mosaicplot(cut~color, data = dsmall, color = TRUE)
+mosaicplot(cut~color, data = dsmall, shade = TRUE)
+```
+
+One Numeric Variable
+
+install.packages("gridExtra")
+
+```{r base_1}
+plot(dsmall$depth)
+stripchart(dsmall$depth)
+par(mfrow=c(1,2))
+stripchart(dsmall$depth, method = "stack", pch = 20)
+stripchart(dsmall$depth, method = "jitter", pch = ".")
+```
+
+```{r ggplot_1}
+qplot(y = 1, x = depth, data = dsmall, geom = "point", main = "Standard dotplot")
+
+library(gridExtra)
+jitter <- qplot(y = 1, x = depth, data = dsmall, geom="point", position = "jitter", main = "Jittered dotplot")
+stack <- qplot(y = 1, x = depth, data = dsmall, geom = "point", position = "stack", main = "Stacked dotplot")
+grid.arrange(stack, jitter, ncol = 2)
+
+ggplot(dsmall, aes(x = depth, y = 1)) + geom_point() + ggtitle("Standard dotplot")
+ggplot(dsmall, aes(x = depth, y = 1)) + geom_point(position = position_stack()) + ggtitle("stacked dotplot")
+ggplot(dsmall, aes(x = depth, y = 1)) + geom_point(position = position_jitter()) + ggtitle("jittered dotplot")
+```
+
+```{r g_hist}
+qplot(x = depth, data = dsmall, geom = "histogram", binwidth = 2)
+
+qplot(x = depth, data = dsmall, geom = "histogram", binwidth = 2, color = I("black"), fill = I("white"))
+
+ggplot(dsmall, aes(x = depth)) + geom_histogram(colour = "black", fill = "white") + ggtitle("Distribution of diamond depth")
+```
+
+```{r base_hist}
+hist(dsmall$depth)
+hist(dsmall$depth, xlab = "depth", main = "Histogram of diamond depth", col = "cyan", breaks = 20)
+qplot(x = depth, data = dsmall, geom = "density")
+```
+
+```{r g_hist_densityplot}
+ggplot(dsmall, aes(x = depth)) + geom_density(col = "blue") + geom_histogram(aes(y = ..density..), colour = "black", fill = NA)
+```
+
+```{r b_boxPlot}
+boxplot(dsmall$price)
+boxplot(dsmall$price, horizontal = TRUE, main = "Distribution of diamon prices", xlab = "Dollars")
+```
+
+```{r norm_qqplots}
+qqnorm(dsmall$price)
+qqline(dsmall$price, col = "red")
+
+z <- rnorm(1000)
+qqnorm(z)
+qqline(z, col = "blue")
+```
+
+Two Numeric Variables
+
+```{r base_2_numeric}
+plot(price ~ carat, data = dsmall)
+
+plot(price ~ carat, data = dsmall)
+abline(lm(price ~ carat, data = dsmall), col = "blue")
+lines(lowess(dsmall$price~dsmall$carat), col = "red")
+```
+
+```{r gg_2_numeric}
+qplot(x = carat, y = price, data = dsmall, geom = 'point')
+ggplot(dsmall, aes(x = carat, y = price)) + geom_point()
+qplot(x = carat, y = price, data = dsmall, geom = c("point", "smooth"))
+
+ggplot(dsmall, aes(x = carat, y = price)) + geom_point() + geom_smooth(se = FALSE, method = "lm")
+```
+
+Two Numerical and One Categorical
+
+```{r gg_2num_1cat}
+ggplot(dsmall, aes(x = carat, y = price, color = cut)) + geom_point()
+
+ggplot(dsmall, aes(x = carat, y = price, color = cut)) + geom_point() + geom_smooth(se = FALSE)
+ggplot(dsmall, aes(x = carat, y = price, color = clarity, shape = cut)) + geom_point()
+```
+
+One Numerical and One Categorical
+
+```{r b_1num_1cat}
+stripchart(dsmall$carat ~ dsmall$color, pch = 16, col = rainbow(7))
+```
+
+```{r gg_1num_1cat}
+a <- qplot(x = carat, y = color, data = dsmall, geom = "point", main = "using qplot")
+b <- ggplot(dsmall, aes(x = carat, y = color, col = color)) + geom_point() + ggtitle("using ggplot")
+grid.arrange(a, b, ncol=2)
+```
+
+
+Grouped Boxplots
+
+```{r base_grouped}
+boxplot(carat~color, data = dsmall)
+```
+
+```{r gg_grouped}
+qplot(x = color, y = carat, data = dsmall, geom = "boxplot", main = "Boxplots of diamond carat across color")
+
+c1 <- qplot(x = color, y = carat, data = dsmall, geom = "boxplot", color = color, main = "colored lines and using qplots")
+ct <- ggplot(dsmall, aes(x=color, y = carat, fill = color)) + geom_boxplot() + ggtitle("colored boxes and using ggplot")
+grid.arrange(c1, ct, ncol=2)
+```
+
+Grouped Histograms
+
+```{r ggplotz_grouped_hist}
+a <- qplot(x = carat, data = dsmall, geom="histogram", fill = color)
+b <- qplot(x = carat, data = dsmall, geom="density", fill = color)
+grid.arrange(a, b, ncol=2)
+
+c <- ggplot(dsmall, aes(x = carat, fill = color)) + geom_density(alpha=.2)
+d <- ggplot(dsmall, aes(x = carat, col = color)) + geom_density()
+grid.arrange(c, d, ncol = 2)
+```
+
+FACETING/PANELING
+
+```{r facetstuff}
+qplot(x = carat, data = dsmall, geom = "histogram", facets = color ~.)
+ggplot(dsmall, aes(x = carat, fill = color)) + geom_histogram() + facet_wrap(~color)
+
+ggplot(dsmall, aes(x = carat, fill = color)) + geom_histogram() + facet_wrap(~color, ncol = 4)
+
+ggplot(dsmall, aes(x = carat, fill = color)) + geom_histogram() + facet_grid(color~.)
+
+ggplot(dsmall, aes(x = carat, fill = color)) + geom_histogram() + facet_grid(.~color)
+```
+
+Paneling on Two Variables
+
+```{r two_var_paneling}
+ggplot(dsmall, aes(x = carat, fill = color)) + geom_histogram() + facet_grid(cut ~ color)
+
+ggplot(dsmall, aes(x = carat, y = price, color = cut)) + geom_point() + facet_grid(clarity ~ color)
+```

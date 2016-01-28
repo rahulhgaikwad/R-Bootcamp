@@ -1,0 +1,102 @@
+---
+title: "A Bootcamp for Reproducible Data Analysis using R"
+author: "Robin Donatello"
+date: "Math 199 Fall 2016"
+output: html_document
+---
+
+
+## Introduction to the class
+
+- Target audience: Anyone who wants to do their own data analysis!
+
+- Primer to get the complete novice up and running with the basic knowledge of how to use the statistical programming language R. 
+- Topics include: R programming basics, importing data, properties of tidy data, visualizing data, reproducible research with Markdown and basic data wrangling. 
+
+- Get you up and running with basic knowledge of `R` ASAP.
+- MATH 315 uses R heavily. This course is designed as a co- or pre-requisite. 
+
+
+## Why use R? 
+- Free!
+- Cross platform. 
+- Tons of free tutorials. 
+- The R-project \url{http://www.r-project.org/} is a free open-source programming language that can easily create dynamic graphics for data visualization. 
+- It is also a flexible statistical analysis toolkit, and provides access to powerful cutting edge analytics. 
+- The fastest growing statistical analysis program in the Natural Sciences according to the Journal [Nature](http://www.nature.com/news/programming-tools-adventures-with-r-1.16609).
+- The R community is a robust, vibrant community of users that has [grown rapidly](http://blog.revolutionanalytics.com/2015/05/r-tops-2015-kdnuggets-software-poll-.html) in the past few years. 
+- As has the number of [companies](http://www.revolutionanalytics.com/companies-using-r) who rely on R as their data science platform. 
+
+
+##  Why use R Studio
+- Also free!
+- Customizable workspace that docks all windows together. 
+- Syntax highlighting, warning errors when missing a closing parentheses. 
+- Cross-platform interface. Also works on Windows/iOS/Linux
+- Tab completion for functions. Forget the syntax or a variable name? Popup helpers are available. 
+- Free training videos available from the developers directly.
+- One button publishing of reproducible documents such as reports, interactive visualizations, presentations (like this one!)
+
+
+## Other ways to learn R
+There are literally hundreds of free tutorials on how to learn R. 
+
+These lists were created in 2012 but still mostly relevant. 
+
+- [General guides](http://pairach.com/2012/06/17/r_tutorials_non-uni/)  
+- [102 University based tutorials](http://pairach.com/2012/02/26/r-tutorials-from-universities-around-the-world/)
+    - One of note [UCLA R Starter kit](http://www.ats.ucla.edu/stat/r/sk/)
+ 
+A couple interactive tutorials. 
+
+- Data Camp: <https://www.datacamp.com/>
+- Try R: <http://tryr.codeschool.com/>
+
+And hundreds of YouTube videos.  
+
+## Structure of this class
+* Content is fully online and available to you now. 
+* We will meet TR 5-7pm for you to work through content. 
+* You can work at your own pace, but there are quiz deadlines. 
+* Weeks 1-3: Interactive coding sessions and non-interactive labs. 
+* Week 4: Putting it together in an analysis project. 
+
+
+## Time Committment
+* Fast paced 1 unit course conducted over 7 days. 
+* Expect to spend 5-7 hours per week if you have never programmed before. 
+
+![hard](./hard.jpg)
+
+
+
+## Getting Help
+* We will be contributing to the Chico State Statistics Students [Google Group](https://groups.google.com/forum/#!forum/csuc_stat).     - This is a place to get help from students and instructors at all levels outside class time. 
+    - Use tags on your posts liberally to make searching for answers easier. 
+* Your first resource is each other. Your second resource is Google. 
+* I will **not** answer emails about any coding problems. Post your question on the discussion forum and I or someone else will answer it there. 
+* Another great resource is [StackOverflow](http://stackoverflow.com/questions/tagged/r) using the `r` or `markdown` tags. 
+* Prepare a [minimal working example](http://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example) of your problem on the forum, it may be helpful to include a screenshot of the problem. 
+
+
+## You will be responsible for
+
+1. Understanding the requirements of the class.
+2. Working through each lab fully. 
+3. Completing each Swirl lesson. 
+4. Completing quizzes for each lab. 
+5. Staying on track. 
+6. Using the class forum and attending the problem solving sessions to get help.
+7. Completing a data analysis project.
+8. Evaluating three of your peers on said data analysis project. 
+
+
+## Syllabus
+
+* The syllabus for the class can be found on the [class website](https://htmlpreview.github.io/?http://norcalbiostat.github.io/R-Bootcamp/Syllabus.html).
+* This covers course details such as grading, office hours and required materials.
+
+## Getting started!
+1. Enroll in the [Google Group](https://groups.google.com/forum/#!forum/csuc_stat) class forum.
+2. Introduce yourself the class on the forum board. State your background and why you are enrolled in this bootcamp. 
+3. These [notes](lec02_Setup_R_and_R_Studio.html) cover how to setup R and R Studio.

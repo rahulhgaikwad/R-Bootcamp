@@ -1,0 +1,48 @@
+---
+title: 'Lab 5: Reproducible Data Analysis using RMarkdown'
+output:
+  html_document:
+    highlight: pygments
+    theme: cerulean
+  pdf_document:
+    highlight: zenburn
+    number_sections: yes
+---
+
+# Introduction
+In this lab you will learn to write a document using R markdown, integrate live R code into a literate statistical program, compile R markdown documents using knitr and related tools, and organize a data analysis so that it is reproducible and accessible to others.
+
+## Why Reproducible Research? 
+
+From the Coursera [Reproducible research](https://www.coursera.org/course/repdata) course description: Reproducible research is the idea that data analyses, and more generally, scientific claims, are published with their data and software code so that others may verify the findings and build upon them.  The need for reproducibility is increasing dramatically as data analyses become more complex, involving larger datasets and more sophisticated computations. Reproducibility allows for people to focus on the actual content of a data analysis, rather than on superficial details reported in a written summary. In addition, reproducibility makes an analysis more useful to others because the data and code that actually conducted the analysis are available. This course will focus on literate statistical analysis tools which allow one to publish data analyses in a single document that allows others to easily execute the same analysis to obtain the same results.
+
+### RR in current day science
+* http://simplystatistics.org/2014/06/06/the-real-reason-reproducible-research-is-important/
+* Special articles in Nature http://www.nature.com/news/reproducibility-1.17552 that talk about the need to share code and reproducibility in the sciences. 
+* The spreadsheet error and austerity - as seen through [The Colbert Report](http://thecolbertreport.cc.com/videos/kbgnf0/austerity-s-spreadsheet-error---thomas-herndon)'s eyes. Moral of this story: ask for the data and question results that look too good to be true. 
+
+
+### The cancer research scandal at Duke. 
+Simple and not so simple erorrs, combined with some fradulent cover-up puts cancer patient's lives at risk. 
+
+* [60 minutes story](https://www.youtube.com/watch?v=eV9dcAGaVU8)
+* [60 min interview with Baggerly](https://www.youtube.com/watch?v=66dPIFMJ_-A)
+* [A biostatisticans telling of the tale](https://uw.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=bc239422-6a6e-4854-a4c7-37edcd54e9a0) Skip to 1:12 for the start. 
+* [Kieth Baggerly](https://uw.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6760b204-c935-4e33-b93d-61530135f171) talking about reproducible research and big data (such as genomic type data), and what can go wrong. This is the long version, but straight from the man himself. 
+
+
+# Markdown
+
+* Follow along with [this](https://www.youtube.com/watch?v=DNS7i2m4sB0) tutorial by Roger Peng. Reproduce what he does in the video on your own machine. 
+* Review the basics of the markdown syntax in this video from [The Data Scientist's Toolbox](https://www.youtube.com/watch?v=Nc0CS0nX-M4) from the Coursera course. 
+
+## Practice
+
+*Going to fix these links tomorrow*
+
+1. Download the [Lab5a.Rmd](labs/Lab5a.Rmd) RMarkdown file and open the [Lab5a Helper.html](labs/Lab5a_Helper.html) web page from the course website. The helper HTML will guide you in writing your R and Markdown code. 
+2. Follow the lab instructions. 
+
+
+## Additional Resources
+R Studio provides [cheat sheets](https://www.rstudio.com/resources/cheatsheets/) for commonly used commands. 

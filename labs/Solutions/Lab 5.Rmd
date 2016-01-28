@@ -1,0 +1,57 @@
+---
+title: "Lab 5"
+output: html_document
+---
+getwd()
+```{r load}
+email50 <- read.delim("email50.txt", header=TRUE, sep = "\t")
+```
+
+```{r min_max}
+min(email50$num_char);max(email50$num_char)
+```
+
+```{r range}
+range(email50$num_char)
+```
+
+```{r mean_var}
+mean(email50$num_char)
+var(email50$num_char)
+```
+
+```{r num_char_hist}
+hist(email50$num_char)
+```
+
+```{r 3_breaks}
+hist(email50$num_char, breaks = 3)
+```
+
+```{r 13_bins}
+hist(email50$num_char, breaks = 12)
+```
+
+```{r 5_number_summary}
+summary(email50$num_char)
+```
+
+```{r boxplot}
+boxplot(email50$num_char)
+```
+
+```{r horizontal_boxplot}
+boxplot(email50$num_char, horizontal = TRUE)
+```
+
+```{r scatterplot}
+plot(email50$line_breaks ~ email50$num_char)
+```
+
+```{r grp_boxplot}
+boxplot(email50$num_char ~ email50$spam)
+```
+
+```{r horizontal_grp_boxplot}
+boxplot(email50$num_char ~ email50$spam, horizontal = TRUE)
+```

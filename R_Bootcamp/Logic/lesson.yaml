@@ -1,0 +1,141 @@
+- Class: meta
+  Course: R Bootcamp
+  Lesson: Logic
+  Author: Robin Donatello
+  Type: Standard
+  Organization: CSU Chico
+  Version: 2.3.1
+  
+  
+- Class: text
+  Output: This lesson is meant to be a short introduction to logical operations in R.
+
+- Class: text
+  Output: You're probably familiar with arithmetic operators like `+`, `-`, `*`, and `/`. 
+    Logical operators include `<`, `>`, `<=`, `>=`, `==` for exact equality, and `!=` for
+    inequality.
+
+- Class: text
+  Output: These operators are used to construct logical expressions which will evaluate to either TRUE or FALSE.
+    
+- Class: cmd_question
+  Output: The first logical operator we are going to discuss is the equality operator, represented 
+    by two equals signs `==`. Use the equality operator below to find out if TRUE is equal to TRUE.
+  CorrectAnswer: TRUE == TRUE
+  AnswerTests: omnitest(correctExpr='TRUE == TRUE')
+  Hint: Use the equality operator and type TRUE == TRUE
+
+- Class: cmd_question
+  Output: The equality operator can also be used to compare numbers. Use `==` to see if 6 is equal to 7.
+  CorrectAnswer: 6 == 7
+  AnswerTests: omnitest(correctExpr='6 == 7')
+  Hint: Use the equality operator and type 6 == 7
+
+- Class: text
+  Output: The previous expression evaluates to FALSE because 6 is less than 7. 
+
+- Class: cmd_question
+  Output: Use `<` to confirm that 6 is less than 7.
+  CorrectAnswer: 6 < 7
+  AnswerTests: omnitest(correctExpr='6 < 7')
+  Hint: Use the less than operator and type 6 < 7
+
+
+- Class: text
+  Output: The less than operator `<` tests whether the number on the left side of the operator 
+    is less than the number on the right side of the operator. Hence why 6<7 evaluated as TRUE.
+
+- Class: cmd_question
+  Output: There is also a less-than-or-equal-to operator `<=` which tests whether the left operand 
+    is less than or equal to the right operand. Write an expression to test whether 10 is less than or equal to 10.
+  CorrectAnswer: 10 <= 10
+  AnswerTests: omnitest(correctExpr='10 <= 10')
+  Hint: Use the `<=` operator and type 10 <= 10
+
+- Class: text
+  Output: Keep in mind that there are the corresponding greater than `>` and greater-than-or-equal-to
+    `>=` operators.
+
+- Class: mult_question
+  Output: 'Which of the following evaluates to FALSE?'
+  CorrectAnswer: 9 >= 10
+  AnswerChoices: 9 >= 10; 7 == 7; 6 < 8; 0 > -36 
+  AnswerTests: omnitest(correctVal='9 >= 10')
+  Hint: 'If you need to, you can evaluate each expression in a separate R session to find the correct answer.'
+
+- Class: mult_question
+  Output: 'Which of the following evaluates to TRUE?'
+  CorrectAnswer: 9 >= 10
+  AnswerChoices: 9 >= 10; 7 == 9; 57 < 8; -6 > -7 
+  AnswerTests: omnitest(correctVal='-6 > -7')
+  Hint: 'If you need to, you can evaluate each expression in a separate R session to find the correct answer.'
+
+- Class: cmd_question
+  Output: The next operator we will discuss is the 'not equals' operator represented by `!=`. Not equals tests whether two
+    values are unequal, so TRUE != FALSE evaluates to TRUE. Like the equality operator, `!=` can also
+    be used with numbers. Try writing an expression to see if 5 is not equal to 7.
+  CorrectAnswer: 5 != 7
+  AnswerTests: omnitest(correctExpr='5 != 7')
+  Hint: Use the not equals operator and type 5 != 7
+
+- Class: text
+  Output: Just like arithmetic, logical expressions can be grouped by parenthesis so that the entire expression
+   (TRUE == TRUE) == TRUE evaluates to TRUE. 
+
+- Class: cmd_question
+  Output: To test out this property, evaluate (3 > 5) != (4 == 4) and try to figure out why it evaluated that way. 
+  CorrectAnswer: (3 > 5) != (4 == 4)
+  AnswerTests: omnitest(correctExpr='(3 > 5) != (4 == 4)')
+  Hint: "Try typing: (3 > 5) != (4 == 4)"
+
+- Class: text
+  Output: Just like with arithmetic operators, logical operators follow the order of operations (PEMDAS). 
+    The expressions inside the operators are evaluated first. (3>5) != (4==4) becomes (FALSE) != (TRUE), 
+    which is evaluated as TRUE.
+  
+- Class: text
+  Output: If we have two logical expressions, A and B, we can ask whether at least
+    one is TRUE with A | B (logical 'or' a.k.a. 'union') or whether they are both
+    TRUE with A & B (logical 'and' a.k.a. 'intersection'). 
+
+- Class: text
+  Output: It's a good idea to spend some time playing around with various combinations
+    of these logical operators until you get comfortable with their use. We'll do
+    a few examples here to get you started.
+
+- Class: text
+  Output: Try your best to predict the result of each of the following statements.
+    You can use pencil and paper to work them out if it's helpful. If you get stuck,
+    just guess and you've got a 50% chance of getting the right answer!
+
+- Class: mult_question
+  Output: (3 > 5) & (4 == 4)
+  CorrectAnswer: 'FALSE'
+  AnswerChoices: TRUE; FALSE
+  AnswerTests: omnitest(correctVal='FALSE')
+  Hint: Break this problem down into 2 pieces. The `&` in the middle states that BOTH
+    pieces are TRUE. Your job is to figure out if that is an accurate statement. If
+    so, the entire condition is TRUE. If not, it's FALSE.
+    
+- Class: mult_question
+  Output: (3 > 5) | (4 == 4)
+  CorrectAnswer: 'TRUE'
+  AnswerChoices: TRUE; FALSE
+  AnswerTests: omnitest(correctVal='TRUE')
+  Hint: Break this problem down into 2 pieces. The `|` in the middle states that AT
+    LEAST ONE of the pieces is TRUE. Your job is to figure out if that is an accurate
+    statement. If so, the entire condition is TRUE. If not, it's FALSE.
+
+- Class: text
+  Output: That's all we're going to cover for now on logical operators. In the next lessons
+    on vectors and subsetting data you'll get a better feeling for how, when and why these logical
+    operators are most commonly used. 
+
+- Class: mult_question
+  Output: Would you like to inform someone about your successful completion of this lesson?
+  CorrectAnswer: NULL
+  AnswerChoices: Yes; No
+  AnswerTests: notify()
+  Hint: NULL
+  
+  

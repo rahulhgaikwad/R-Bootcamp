@@ -1,0 +1,102 @@
+---
+title: "Lab 3"
+output: html_document
+---
+
+1.1 Matrices and Data Frames
+
+```{r, eval=FALSE}
+swirl()
+```
+
+1.1.2 Practice
+
+1. View the top 5 entries in the Species variable using both bracket and dollar sign notation.
+
+```{r}
+iris$Species[1:5]
+```
+
+2. Observe what the error message is when you have a typo in the variable name.  Type table(iris$species) in the console to see (note the lower case s in species).
+
+```{r}
+table(iris$species)
+```
+
+1.2 Looking At Data
+
+```{r, eval = FALSE}
+swirl()
+```
+
+note NROW -> nrow
+
+1.2.1 Practice
+
+1. Use summary() to find out how many different species of flowers were sampled, and how many flowers from each species were sampled.
+
+```{r}
+summary(iris$Species)
+```
+
+2. Use table on the Species variable to confirm your answer.
+
+```{r}
+table(iris$Species)
+```
+
+1.3 Tidy Data
+
+The goal of this lab is to introduce you to how R deals with the most common way data is stored for analysis,
+a rectangular format like an Excel spreadsheet. Ideally each row represents data on a single observation and
+each column contains data on a single variable, or characteristic, of the observation. This is called tidy data.
+We will start to learn some tools to look at the data, and for getting data from an external file into R for
+analysis.
+
+1. What characteristics are being measured here?  Hint: There are 3.
+
+The three characteristics being measured for each observation are religion, income level, and number of occurrences of a religion and an income level.
+
+2.  Is this tidy data?
+
+No it is not tidy data, because each row represents data on multiple observations.  Instead of being a single individual's data on their religion and income per row, all of the observations within a religion are represented in each row.  And by doing this the columns not only represented the income level of an observation, but the frequency as well.
+
+3.  What would a tidy version of this data set look like?
+
+A tidy version of this data set would have a row for each observation such that instead of relating a number of occurrences at each row it would have a fitting number of rows for each observation.  For example looking at the first row, one way of converting it to tidy data would be to create two columns Religion and Income Level.  All religion would be labelled Agnostic and there would be 27 rows with <$10k for their income level variable, 34 rows with $10-20k for their income variable, and so on.
+
+
+1.4 Importing Data
+
+read.table() example
+
+```{r}
+email50 <- read.table("email50.txt", header = TRUE, sep = "\t")
+dim(email50)
+class(email50)
+email50[1:6, 1:6]
+```
+
+read.csv() example
+
+```{r}
+NCbirths <- read.csv("NCbirths.csv", header = TRUE)
+dim(NCbirths)
+class(NCbirths)
+head(NCbirths)
+str(NCbirths)
+```
+
+install.packages("readxl")
+
+read.excel() example
+
+```{r}
+library(readxl)
+OSCounty <- read_excel("OSCounty.xlsx", sheet = 1, col_names = TRUE)
+dim(OSCounty)
+class(OSCounty)
+OSCounty[1:6,1:6]
+str(OSCounty)
+```
+

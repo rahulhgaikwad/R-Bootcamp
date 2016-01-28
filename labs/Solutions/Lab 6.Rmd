@@ -1,0 +1,139 @@
+---
+title: "Lab6 - Plotting Data"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: cerulean
+---
+
+# Introduction
+A semi-comprehensive tutorial on creating a variety of plots is available on the class website [here](http://norcalbiostat.github.io/R-Bootcamp/labs/Data_Visualization_Tutorial.html). 
+
+1 hr 25 min
+
+Follow along through this tutorial at each step try to reproduce the plot. At the end of each section come back to this document for practice. You will use the `survey` data set that is built into `R`, create the following plots. You can use any plotting method you choose. 
+
+?survey
+library(MASS)
+data("survey")
+
+## One categorical variable
+
+1.  A barchart of how often the student exercises. 
+
+```{r often_exercise}
+library(ggplot2)
+library(gridExtra)
+library(MASS)
+qplot(x = Exer, data = survey, geom = "bar", main = "How much a student exercies")
+```
+
+## Two categorical variables. 
+
+1.  A grouped barchart of exercise frequency vs smoking status.
+
+```{r exer_smoke}
+qplot(x = Exer, fill = Smoke, data = survey, position = "dodge")
+```
+
+2.  One would expect that smokers exercise less than non smokers. Using a mosiaicplot does there seem to be a relationship between smoking and exercise? 
+
+```{r mosaic_exer_smoke}
+mosaicplot(Exer~Smoke, data = survey, shade = TRUE)
+```
+
+TIf you exercise some you're more likely to be in the never smoking group.  If you exercise none you're more likely to be in the occassional smoking group.  If you exercise frequently you're more likely to be the other 3 groups than the never smoke group.  All of these are not a drastic change in difference and the changes aren't very consistent to make a definite claim about the relation of smoking and frequency of exercise an individual undertakes.
+
+11:09
+11:19
+## One numeric variable. 
+
+1. A histogram of age
+    a.  With an overlaid density plot in a different color.
+    
+```{r}
+ggplot(survey, aes(x = Age)) + geom_density(col = "blue") + geom_histogram(aes(y = ..density..), colour = "black", fill = NA)
+```
+    
+2. A boxplot of pulse rate.
+
+```{r}
+boxplot(survey$Pulse)
+```
+
+3. Determine if height is normally distributed. 
+
+```{r}
+qqnorm(survey$Pulse)
+qqline(survey$Pulse, col = "blue")
+```
+
+There isn't a huge amount of deviation from a normal distribution to where it is not too problematic to assume a normal distribution.
+
+## Two numeric variables. 
+
+1. A scatterplot of the span of the writing hand against span of non-writing hand. 
+    a. Add a best fit line in purple.
+    b. Add a lowess or smoother line in brown. 
+    
+```{r}
+ggplot(survey, aes(x = NW.Hnd, y = Wr.Hnd)) + geom_point()
+ggplot(survey, aes(x = NW.Hnd, y = Wr.Hnd)) + geom_point() + geom_smooth(se = FALSE, method = "lm", col = "purple") + geom_smooth(se = FALSE)
+```
+
+
+## Two numerical and one categorical
+
+1. A scatterplot of height against age
+    a. grouped by gender (you can choose grouping by shape or color)
+
+```{r}    
+ggplot(survey, aes(x = Age, y = Height, color = Sex)) + geom_point()
+```
+
+  b. With a lowess line per gender
+
+```{r}
+ggplot(survey, aes(x = Age, y = Height, color = Sex)) + geom_point() + geom_smooth(se = FALSE)
+```
+    
+    
+2. A scatterplot of height against age
+    a. paneled (faceted) by exercise regimine
+
+```{r}
+ggplot(survey, aes(x = Age, y = Height)) + geom_point() + facet_grid(Exer~.)
+```
+
+## One numeric and one categorical
+
+1. Grouped boxplots of pulse by smoking status. 
+
+```{r}
+ggplot(survey, aes(x = Smoke, y = Pulse, fill = Smoke)) + geom_boxplot()
+```
+
+2. Overlaid density plots of height by gender. 
+
+```{r}
+ggplot(survey, aes(x = Height, fill = Sex)) + geom_density(alpha=.2) 
+```
+
+3. Histogram of writing hand span paneled by gender
+     a. where the panels are horizontal (1 row 2 columns)
+     
+```{r}
+ggplot(survey[!is.na(survey$Sex),], aes(x = Wr.Hnd, fill = Sex)) + geom_histogram() + facet_wrap(~Sex)
+```
+     
+     b. where the panels are vertical (2 rows 1 column)
+     
+```{r}
+ggplot(survey[!is.na(survey$Sex),], aes(x = Wr.Hnd, fill = Sex)) + geom_histogram() + facet_grid(Sex~.)
+```
+     
+     
+     
+
