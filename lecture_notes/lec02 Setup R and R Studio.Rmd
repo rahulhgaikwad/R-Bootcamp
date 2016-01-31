@@ -20,12 +20,17 @@ This lesson will provide information on how to
 Download the latest versions of R and R Studio for your flavor of operating system.
 
 * [R](http://cran.r-project.org/)
+    - Install Options:
+        - Don't use a personal library
+        - Don't create shortcuts on desktop or startup menu
 * [R Studio](http://www.rstudio.com/products/rstudio/download/)
 
 If you are having difficulty installing these programs here are links to helpful YouTube video on installing both R and R Studio. 
 
 - [Mac Instructions](http://www.youtube.com/watch?v=uxuuWXU-7UQ)
 - [Windows Instructions](http://www.youtube.com/watch?v=Ohnk9hcxf9M)
+
+
 
 
 ## Layout of R Studio
